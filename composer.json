@@ -2,6 +2,7 @@
   "name": "sebastien/phpbeauty-html",
   "type": "library",
   "licence": "MIT",
+  "version": "1.0",
   "require-dev": {
     "phpunit/phpunit": "^12.0"
   },
