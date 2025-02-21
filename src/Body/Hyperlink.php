@@ -8,6 +8,8 @@ final class Hyperlink extends Element
 {
     public function __construct(string $path, public string $label)
     {
+        $this->tag = "a";
+        
         $this->ignoreClientAttribute("href");
 
         $this->attributes['normal']['href'] = $path;

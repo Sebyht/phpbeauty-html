@@ -20,10 +20,14 @@ final class Text extends Element
         }
 
         $this->tag = "h" . $level;
+
+        return $this;
     }
 
     public function sample (string $surround = "span")
     {
         $this->tag = $surround;
+
+        return $this;
     }
 }

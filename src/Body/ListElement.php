@@ -9,12 +9,16 @@ final class ListElement extends Element
 {
     private array $items = [];
 
-    public function __construct(array $items)
+    public function __construct(array $items, ?string $tag = null)
     {
-        $this->tag = is_associative($items) ? "ul" : "ol";
+        if ($tag !== null) {
+            $this->tag = $tag;
+        } else {
+            $this->tag = is_associative($items) ? "ul" : "ol";
+        }
 
         foreach($items as $key => $item) {
-            $this->items[$key] = (new Wrapper("li"))->content($item);
+            $this->items[$key] = (new Wrapper("li"))->content(ucfirst($item));
         }
     }
 

@@ -26,9 +26,13 @@ final class Wrapper extends Element
         return $this->Addattribute($name, $value);
     }
     
-    public function content (string $content, bool $reset = false)
+    public function content (string $content, bool $reset = false, bool $svg = false)
     {
         $this->withContent($content, $reset);
+
+        if ($svg && strpos($content, "<svg") === 0) {
+            $this->unsecureContent();
+        }
 
         return $this;
     }

@@ -9,7 +9,8 @@ final class Template
         "lang" => "en",
         "content" => "",
         "scripts" => "",
-        "styles" => ""
+        "styles" => "",
+        "fonts" => "",
     ];
 
     private string $layout;
@@ -36,6 +37,11 @@ final class Template
         }
 
         $this->args[$arg] = $value;
+    }
+
+    public function font (string $link)
+    {
+        $this->templateArg("fonts", $link);
     }
 
     public function title (string $title, bool $keepOld = true)
@@ -84,7 +90,7 @@ final class Template
     {
         $extension = pathinfo($file)['extension'];
 
-        $virtual_file =  $extension . "/" . $file;
+        $virtual_file = "/" .  $extension . "/" . $file;
 
         $realfile = $this->realpath . sp(). $virtual_file;
 
@@ -94,9 +100,9 @@ final class Template
 
         $key = $extension === "css" ? "styles" : "scripts";
 
-        $src = "src='$virtual_file'";
+        $src = "'$virtual_file'";
 
-        $link = $extension === "css" ? "<link rel='stylesheet' $src />" : "<script $src></script>";
+        $link = $extension === "css" ? "<link rel='stylesheet' type='text/css' href=$src>" : "<script src=$src></script>";
 
         $this->templateArg($key, $link);
 

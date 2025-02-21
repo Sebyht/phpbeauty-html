@@ -2,7 +2,10 @@
 
 use Beauty\Body\Field;
 use Beauty\Body\Form;
+use Beauty\Body\Hyperlink;
+use Beauty\Body\ListElement;
 use Beauty\Body\Text;
+use Beauty\Body\Wrapper;
 
 function err_msg (string $message)
 {
@@ -58,4 +61,19 @@ function field (string $name, string $tag = "input")
 function form (string $action, string $method = "get", array $data = [])
 {
     return new Form($action, $method, $data);
+}
+
+function listing (array $items)
+{
+    return new ListElement($items);
+}
+
+function wrap (string $tag = "div")
+{
+    return new Wrapper($tag);
+}
+
+function hyperlink (string $path, string $label)
+{
+    return new Hyperlink($path, $label);
 }
